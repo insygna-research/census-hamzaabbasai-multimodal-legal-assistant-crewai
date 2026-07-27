@@ -1,0 +1,61 @@
+VENDOR SERVICES AGREEMENT
+
+This Vendor Services Agreement is made between Northstar Retail GmbH
+("Customer") and BrightDesk Software Ltd ("Supplier").
+
+1. SERVICES
+
+Supplier will provide the hosted reporting service described in Schedule A.
+The service will be available from 1 August 2026.
+
+2. FEES
+
+Customer will pay EUR 4,800 each month. Supplier may change the fees at its
+sole discretion and at any time by sending an email to Customer.
+
+3. TERM AND RENEWAL
+
+The initial term is twelve months. This agreement will automatically renew for
+another twelve-month term unless Customer gives written notice at least ninety
+days before the renewal date.
+
+4. DATA PROTECTION
+
+Supplier may process personal data outside the European Economic Area without
+additional contractual safeguards. Supplier will take reasonable steps to
+protect account information.
+
+5. CONFIDENTIALITY
+
+Each party must protect confidential information and may only use it to perform
+this agreement.
+
+6. LIABILITY
+
+Customer's liability under this agreement is unlimited, including liability
+for indirect loss, lost profits, and claims made by third parties.
+
+7. INDEMNITY
+
+Customer shall indemnify Supplier, its directors, employees, and contractors
+against all claims connected with Customer's use of the service.
+
+8. TERMINATION
+
+Supplier may terminate this agreement for convenience with five days of
+written notice. Customer may terminate for a material breach that remains
+unfixed for thirty days.
+
+9. GOVERNING LAW
+
+This agreement is governed by the laws of Germany. The courts of Berlin have
+exclusive jurisdiction.
+
+Signed for Northstar Retail GmbH
+Name: Eva Schneider
+Title: Procurement Director
+
+Signed for BrightDesk Software Ltd
+Name: Daniel Cole
+Title: Managing Director
+

@@ -1,0 +1,32 @@
+{
+  "name": "EU Vendor Contract Playbook",
+  "version": "1.0",
+  "rules": [
+    {
+      "clause": "liability",
+      "preferred_position": "Cap general liability at fees paid in the previous 12 months.",
+      "severity": "critical"
+    },
+    {
+      "clause": "termination",
+      "preferred_position": "Provide at least 30 days of written notice for termination without cause.",
+      "severity": "high"
+    },
+    {
+      "clause": "data_protection",
+      "preferred_position": "Use an approved transfer mechanism for personal data outside the EEA.",
+      "severity": "high"
+    },
+    {
+      "clause": "renewal",
+      "preferred_position": "Send a renewal reminder and allow a 30-day cancellation window.",
+      "severity": "medium"
+    },
+    {
+      "clause": "indemnity",
+      "preferred_position": "Limit indemnity to controlled third-party claims and make it mutual where reasonable.",
+      "severity": "high"
+    }
+  ]
+}
+

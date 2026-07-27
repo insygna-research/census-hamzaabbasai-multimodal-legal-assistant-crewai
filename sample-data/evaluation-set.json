@@ -1,0 +1,33 @@
+[
+  {
+    "id": "eval-liability-01",
+    "jurisdiction": "EU",
+    "contract_text": "[Page 1]\nThe customer's liability is unlimited and includes indirect losses. Confidential information must be protected. This contract is governed by the laws of Germany and may be terminated with 30 days of notice. Personal data is processed under the GDPR.",
+    "expected_clause_types": ["liability"]
+  },
+  {
+    "id": "eval-renewal-01",
+    "jurisdiction": "Germany",
+    "contract_text": "[Page 1]\nThis agreement will automatically renew for one year unless notice is sent 90 days before expiry. Liability is capped at fees paid in the last year. Both parties must protect confidential information. German law governs this agreement. Either party may terminate with 30 days of notice. Personal data will be handled under the GDPR.",
+    "expected_clause_types": ["auto_renewal"]
+  },
+  {
+    "id": "eval-data-01",
+    "jurisdiction": "EU",
+    "contract_text": "[Page 2]\nThe supplier may transfer personal data outside the European Economic Area without additional safeguards. Confidential information must remain private. Liability is capped. This agreement is governed by French law and may be terminated with 30 days of notice.",
+    "expected_clause_types": ["data_transfer"]
+  },
+  {
+    "id": "eval-fees-01",
+    "jurisdiction": "United Kingdom",
+    "contract_text": "[Page 1]\nThe supplier may change the fees at its sole discretion and at any time. Each party must protect confidential information. Liability is capped at the annual fees. English law governs this agreement. Either party may terminate with 30 days of notice. Personal data must be protected.",
+    "expected_clause_types": ["unilateral_change"]
+  },
+  {
+    "id": "eval-indemnity-01",
+    "jurisdiction": "United States",
+    "contract_text": "[Page 3]\nCustomer shall indemnify Supplier against all third-party claims, costs, and losses connected with use of the service. The contract contains confidentiality, data protection, termination, liability, and governing law clauses.",
+    "expected_clause_types": ["indemnity"]
+  }
+]
+
