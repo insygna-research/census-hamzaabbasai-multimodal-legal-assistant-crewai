@@ -2,6 +2,8 @@
 
 <img src="frontend/public/legal-document.png" alt="Multimodal Legal Assistant logo" width="88">
 
+[View Live Demo](https://multimodal-legal-assistant-crewai.vercel.app)
+
 Legal and procurement teams can spend many hours reading long contracts. They
 also need to connect each risk to the correct clause and page.
 
