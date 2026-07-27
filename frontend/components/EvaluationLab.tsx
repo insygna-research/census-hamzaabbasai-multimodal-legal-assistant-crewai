@@ -36,8 +36,8 @@ export function EvaluationLab({
 
       <div className="runner-summary">
         <div>
-          <small>Review stack</small>
-          <strong>CrewAI · Mistral · Qdrant</strong>
+          <small>Evaluation set</small>
+          <strong>Clause risk and evidence checks</strong>
         </div>
         <span>
           <CheckCircle2 size={15} />

@@ -4,18 +4,12 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   AlertTriangle,
   CheckCircle2,
-  FileStack,
   LoaderCircle,
   RefreshCw,
   Search,
 } from "lucide-react";
 import { api } from "@/lib/api";
-import type {
-  ContractDocument,
-  EvaluationResult,
-  Health,
-  Review,
-} from "@/lib/types";
+import type { ContractDocument, EvaluationResult, Review } from "@/lib/types";
 import { ControlsView } from "@/components/ControlsView";
 import { DocumentTable } from "@/components/DocumentTable";
 import { EvaluationLab } from "@/components/EvaluationLab";
@@ -25,9 +19,14 @@ import { UploadPanel } from "@/components/UploadPanel";
 
 type View = "reviews" | "evaluation" | "controls";
 
+const viewTitles: Record<View, string> = {
+  reviews: "Contract review",
+  evaluation: "Quality checks",
+  controls: "Policy controls",
+};
+
 export default function Home() {
   const [view, setView] = useState<View>("reviews");
-  const [health, setHealth] = useState<Health | null>(null);
   const [documents, setDocuments] = useState<ContractDocument[]>([]);
   const [reviews, setReviews] = useState<Review[]>([]);
   const [selectedDocument, setSelectedDocument] =
@@ -40,12 +39,10 @@ export default function Home() {
   const [error, setError] = useState<string | null>(null);
 
   const refresh = useCallback(async () => {
-    const [healthResult, documentResult, reviewResult] = await Promise.all([
-      api.health(),
+    const [documentResult, reviewResult] = await Promise.all([
       api.documents(),
       api.reviews(),
     ]);
-    setHealth(healthResult);
     setDocuments(documentResult);
     setReviews(reviewResult);
     setSelectedReview((current) =>
@@ -152,6 +149,10 @@ export default function Home() {
 
       <main className="main">
         <header className="topbar">
+          <div className="topbar-context">
+            <span>Legal operations</span>
+            <strong>{viewTitles[view]}</strong>
+          </div>
           <div className="search">
             <Search size={17} />
             <input
@@ -170,10 +171,6 @@ export default function Home() {
           >
             {busy ? <LoaderCircle className="spin" size={18} /> : <RefreshCw size={18} />}
           </button>
-          <span className="environment">
-            <span />
-            {health ? "API online" : "Checking API"}
-          </span>
         </header>
 
         {notice && (
@@ -199,49 +196,42 @@ export default function Home() {
           <div className="reviews-view">
             <div className="page-intro">
               <div>
-                <span className="eyebrow">Contract operations</span>
-                <h1>Review queue</h1>
-                <p>Check obligations, missing clauses, and risk findings against source text.</p>
+                <span className="eyebrow">Contract review desk</span>
+                <h1>Evidence before judgement.</h1>
+                <p>
+                  Review contract language, trace each finding to its source, and
+                  record a clear decision.
+                </p>
+              </div>
+              <div className="desk-reference">
+                <span>Current workspace</span>
+                <strong>Commercial contracts</strong>
               </div>
             </div>
 
-            <section className="stats-grid">
-              <article>
-                <span className="stat-icon blue">
-                  <FileStack size={19} />
-                </span>
+            <section className="review-register" aria-label="Review register">
+              <div className="register-heading">
+                <span>Live register</span>
+                <strong>Current workload</strong>
+              </div>
+              <dl>
                 <div>
-                  <strong>{stats.documents}</strong>
-                  <small>Contracts</small>
+                  <dt>Contracts</dt>
+                  <dd>{stats.documents}</dd>
                 </div>
-              </article>
-              <article>
-                <span className="stat-icon amber">
-                  <AlertTriangle size={19} />
-                </span>
                 <div>
-                  <strong>{stats.needsReview}</strong>
-                  <small>Need decision</small>
+                  <dt>Need decision</dt>
+                  <dd>{stats.needsReview}</dd>
                 </div>
-              </article>
-              <article>
-                <span className="stat-icon red">
-                  <AlertTriangle size={19} />
-                </span>
                 <div>
-                  <strong>{stats.highRisk}</strong>
-                  <small>High risk</small>
+                  <dt>High risk</dt>
+                  <dd>{stats.highRisk}</dd>
                 </div>
-              </article>
-              <article>
-                <span className="stat-icon green">
-                  <CheckCircle2 size={19} />
-                </span>
                 <div>
-                  <strong>{stats.approved}</strong>
-                  <small>Approved</small>
+                  <dt>Approved</dt>
+                  <dd>{stats.approved}</dd>
                 </div>
-              </article>
+              </dl>
             </section>
 
             <UploadPanel busy={busy} onUpload={upload} onLoadSample={loadSample} />
@@ -250,10 +240,13 @@ export default function Home() {
               <section className="document-panel">
                 <div className="section-heading">
                   <div>
-                    <h2>Contracts</h2>
-                    <p>Select a file to review its current result.</p>
+                    <span className="section-index">01</span>
+                    <h2>Contract register</h2>
+                    <p>Select a file to open its latest review.</p>
                   </div>
-                  <span>{documents.length}</span>
+                  <span className="record-count">
+                    {documents.length} record{documents.length === 1 ? "" : "s"}
+                  </span>
                 </div>
                 <DocumentTable
                   documents={visibleDocuments}

@@ -55,7 +55,7 @@ export function ReviewPanel({
             <span className="eyebrow">New review</span>
             <h2>{document.file_name}</h2>
             <p>
-              Select the review context. The result will still need human approval.
+              Select the legal context before the evidence review starts.
             </p>
           </div>
         </div>
@@ -78,7 +78,8 @@ export function ReviewPanel({
           </label>
 
           <div className="pipeline-note">
-            CrewAI agents use Mistral and retrieve contract evidence from Qdrant.
+            The review checks contract clauses and returns the source text for
+            each finding.
           </div>
 
           <button

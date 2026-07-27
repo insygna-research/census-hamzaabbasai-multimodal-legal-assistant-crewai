@@ -1,12 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import {
-  Activity,
-  FileSearch,
-  FlaskConical,
-  ShieldCheck,
-} from "lucide-react";
+import { FileSearch, FlaskConical, ShieldCheck } from "lucide-react";
 
 type View = "reviews" | "evaluation" | "controls";
 
@@ -16,9 +11,24 @@ type SidebarProps = {
 };
 
 const navigation = [
-  { id: "reviews" as const, label: "Contract reviews", icon: FileSearch },
-  { id: "evaluation" as const, label: "Quality checks", icon: FlaskConical },
-  { id: "controls" as const, label: "Policy controls", icon: ShieldCheck },
+  {
+    id: "reviews" as const,
+    number: "01",
+    label: "Contract reviews",
+    icon: FileSearch,
+  },
+  {
+    id: "evaluation" as const,
+    number: "02",
+    label: "Quality checks",
+    icon: FlaskConical,
+  },
+  {
+    id: "controls" as const,
+    number: "03",
+    label: "Policy controls",
+    icon: ShieldCheck,
+  },
 ];
 
 export function Sidebar({ activeView, onChange }: SidebarProps) {
@@ -41,7 +51,7 @@ export function Sidebar({ activeView, onChange }: SidebarProps) {
       </div>
 
       <nav className="navigation" aria-label="Main navigation">
-        <p className="nav-label">Workspace</p>
+        <p className="nav-label">Review desk</p>
         {navigation.map((item) => {
           const Icon = item.icon;
           return (
@@ -51,21 +61,13 @@ export function Sidebar({ activeView, onChange }: SidebarProps) {
               className={activeView === item.id ? "nav-item active" : "nav-item"}
               onClick={() => onChange(item.id)}
             >
-              <Icon size={18} />
-              {item.label}
+              <span className="nav-index">{item.number}</span>
+              <span className="nav-copy">{item.label}</span>
+              <Icon className="nav-icon" size={17} />
             </button>
           );
         })}
       </nav>
-
-      <div className="system-card">
-        <div className="system-status">
-          <Activity size={16} />
-          <span>Review service available</span>
-        </div>
-        <p>CrewAI · Mistral · Qdrant</p>
-        <small>Human approval remains required.</small>
-      </div>
     </aside>
   );
 }

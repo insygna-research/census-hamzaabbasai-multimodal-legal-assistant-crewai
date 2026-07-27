@@ -36,53 +36,61 @@ export function UploadPanel({
 
   return (
     <section className="upload-panel">
-      <div
-        className={dragging ? "drop-zone dragging" : "drop-zone"}
-        onDragEnter={(event) => {
-          event.preventDefault();
-          setDragging(true);
-        }}
-        onDragOver={(event) => event.preventDefault()}
-        onDragLeave={() => setDragging(false)}
-        onDrop={handleDrop}
-      >
-        <span className="upload-icon">
-          {busy ? <LoaderCircle className="spin" /> : <UploadCloud />}
-        </span>
-        <div>
-          <strong>Upload a contract</strong>
-          <p>PDF, scanned image, text or Markdown · up to 20 MB</p>
-        </div>
-        <button
-          type="button"
-          className="button secondary"
-          disabled={busy}
-          onClick={() => inputRef.current?.click()}
-        >
-          Choose file
-        </button>
-        <input
-          ref={inputRef}
-          type="file"
-          accept=".pdf,.png,.jpg,.jpeg,.webp,.txt,.md"
-          hidden
-          onChange={handleChange}
-        />
+      <div className="intake-heading">
+        <span>New intake</span>
+        <strong>Add a contract</strong>
+        <p>Start a new evidence review from a file.</p>
       </div>
 
-      <div className="sample-row">
-        <FileText size={17} />
-        <span>
-          No contract ready? Load a sample vendor agreement with known risks.
-        </span>
-        <button
-          type="button"
-          className="text-button"
-          disabled={busy}
-          onClick={onLoadSample}
+      <div className="intake-body">
+        <div
+          className={dragging ? "drop-zone dragging" : "drop-zone"}
+          onDragEnter={(event) => {
+            event.preventDefault();
+            setDragging(true);
+          }}
+          onDragOver={(event) => event.preventDefault()}
+          onDragLeave={() => setDragging(false)}
+          onDrop={handleDrop}
         >
-          Load sample
-        </button>
+          <span className="upload-icon">
+            {busy ? <LoaderCircle className="spin" /> : <UploadCloud />}
+          </span>
+          <div>
+            <strong>Drop the contract here</strong>
+            <p>PDF, scanned image, text or Markdown · up to 20 MB</p>
+          </div>
+          <button
+            type="button"
+            className="button secondary"
+            disabled={busy}
+            onClick={() => inputRef.current?.click()}
+          >
+            Choose file
+          </button>
+          <input
+            ref={inputRef}
+            type="file"
+            accept=".pdf,.png,.jpg,.jpeg,.webp,.txt,.md"
+            hidden
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="sample-row">
+          <FileText size={17} />
+          <span>
+            No contract ready? Load a sample vendor agreement with known risks.
+          </span>
+          <button
+            type="button"
+            className="text-button"
+            disabled={busy}
+            onClick={onLoadSample}
+          >
+            Load sample
+          </button>
+        </div>
       </div>
     </section>
   );
